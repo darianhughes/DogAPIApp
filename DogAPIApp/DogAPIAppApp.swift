@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct DogAPIAppApp: App {
+    @StateObject private var favorites = FavoritesManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                DogBrowserView()
+                    .tabItem {
+                        Label("Browse", systemImage: "photo.on.rectangle.angled")
+                    }
+                
+                FavoritesView()
+                    .tabItem {
+                        Label("Favorites", systemImage: "heart")
+                    }
+            }
         }
     }
 }
